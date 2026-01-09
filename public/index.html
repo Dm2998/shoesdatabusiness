@@ -40,11 +40,9 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 
-
     <!-- Link to your custom CSS files -->
-    
-
-
+  <link rel="stylesheet" href="css/viewFeaturedBikes.css">
+  
 
     <!--Link to Slick Carousel CSS for additional carousel options -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -54,11 +52,70 @@
 
 <body>
 
+  <!-- START OF SHOES CONTAINER -->
 
+  <main> 
+    <div class="shoes-container py-6">
+      <!-- Section title with anchor link -->
+      <a href="#section-bike" class="link-button" data-aos="zoom-in-up">
+        <h1 id="section-bike">Get the Right Shoes for You!</h1>
+      </a>
+      <!-- START OF Shoes "Best TRIPS WITH OUR BEST SHOES" CON -->
+      <section class="container pt-6 pb-4" data-aos="zoom-in-down">
+        <div id="bike-type-container">
+          <h2 class="mb-4 main-heading text-center">Best Shoes FOR YOU</h2>
+          <div class="row">
+          </div>
+        </div> 
+      </section>
+      <!-- END OF Shoes "Best TRIPS WITH OUR BEST SHOES" CON -->
+      
+      <!-- START OF FEATURES Shoes -->
+      <section id="featured-shoes-section">
+        <button id="view-shoes" data-aos="zoom-in-down">View ALL Shoes</button>
+        <h2 class="featured-shoes-title" data-aos="zoom-in-up">Featured Shoes</h2>
+        <div id="featured-shoes" class="row"></div>
+      </section>
+      <!-- END OF FEATURES Shoes -->
+      <div id="shop-model" class="model">
+        <div class="model-content">
 
+          <!-- view shoes filter  -->
+          <div class="filters">
+            <label for="category-filter">Category:</label>
+            <select id="category-filter">
+              <option value="all">All</option>
+              <option value="running">Running</option>
+              <option value="casual">Casual</option>
+              <option value="formal">Formal</option>
+            </select>
+            <!--  -->
+            
+            <label for="price-filter">Price Range:</label>
+            <select id="price-filter">
+              <option value="all">All</option>
+              <option value="0-50">$0 - $50</option>
+              <option value="51-100">$51 - $100</option>
+              <option value="101-200">$101 - $200</option>
+              <option value="201+">$201+</option>
+            </select>
+          </div>
+          <!-- View shoes filter -->
+
+          <!-- View shoes list -->
+          <div id="product-list"></div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- END OF SHOES CONTAINER -->
 
    <!-- START OF FOOTER -->
   <!-- creates a footer for the webpage. The footer contains three parts:-->
+
+  
 
       <!-- Link to Bootstrap scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
