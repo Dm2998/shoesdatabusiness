@@ -5,19 +5,16 @@
 
 // asynchroneous function to fetch featured shoes from the database
 async function setupShoesShop() {
-    // initialize the supabase client using the API key and URL 
-    const supabaseUrl = 'https://trjkoclrcdyrkdtwqlyq.supabase.co';
-    const supabaseKey = 'sb_publishable_Dy0ijVacCjT5BrvK7-j25A_VODf1lN-';
-    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    const supabaseUrl = 'https://alaajplhlfovuvlxtjen.supabase.co';
+    const supabaseKey = 'sb_publishable_fU_j2GK7Pq-6SnrO46GekQ_Ksl-4JO3';
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // function to get the featured shoes from the database 
     async function fetchFeaturedShoes() {
         const { data, error } = await supabaseClient
-            .from('shoes_list') // Select the shoes_list table
-            .select('*') // Select all columns
-            .limit(3); // Fetch only 3 shoes
+            .from('bike_list')
+            .select('*')
+            .limit(4);
 
-        // Check if there was an error fetching the featured shoes from the database
         if (error) {
             console.error('Error fetching featured shoes:', error);
         } else {
@@ -25,82 +22,54 @@ async function setupShoesShop() {
         }
     }
 
-    // function to display an overlay with the shoe image
     function showFeaturedShoesOverlay(imageSrc) {
         const overlay = document.createElement('div');
         overlay.classList.add('featured-shoes-overlay');
 
-        // Create an image element and set the source
         const overlayImage = document.createElement('img');
         overlayImage.src = imageSrc;
 
-        // Append image to overlay
         overlay.appendChild(overlayImage);
         document.body.appendChild(overlay);
 
-        // Remove overlay on click
         overlay.addEventListener('click', () => {
             document.body.removeChild(overlay);
         });
     }
+    function renderFeaturedShoes(shoes = []) {
+    const container = document.getElementById('featured-shoes');
+    container.innerHTML = '';
 
-    // function to render the featured shoes 
-    function renderFeaturedShoes(shoes) {
-        const featuredShoesContainer = document.getElementById('featured-shoes');
-        featuredShoesContainer.innerHTML = '';
-        featuredShoesContainer.classList.add('featured-shoes-container');
-
-        // Loop through the shoes array
-        shoes.forEach(shoe => {
-            // Create shoe card
-            const shoeCard = document.createElement('div');
-            shoeCard.classList.add('shoe-card');
-            shoeCard.setAttribute('data-aos', 'zoom-in-down');
-
-            // Shoe image
-            const shoeImage = document.createElement('img');
-            shoeImage.src = shoe.image_url;
-            shoeImage.alt = shoe.name;
-
-            // Shoe info container
-            const shoeInfo = document.createElement('div');
-            shoeInfo.classList.add('shoe-info');
-
-            // Shoe name
-            const shoeName = document.createElement('h3');
-            shoeName.textContent = shoe.name;
-
-            // Shoe category
-            const shoeCategory = document.createElement('p');
-            shoeCategory.textContent = `Category: ${shoe.category}`;
-
-            // Shoe price
-            const shoePrice = document.createElement('p');
-            shoePrice.textContent = `Price: €${shoe.price}`;
-
-            // Append info
-            shoeInfo.appendChild(shoeName);
-            shoeInfo.appendChild(shoeCategory);
-            shoeInfo.appendChild(shoePrice);
-
-            shoeCard.appendChild(shoeImage);
-            shoeCard.appendChild(shoeInfo);
-
-            shoeImage.addEventListener('click', () => {
-                showFeaturedShoesOverlay(shoe.image_url);
-            });
-
-            featuredShoesContainer.appendChild(shoeCard);
-        });
+    if (shoes.length === 0) {
+        container.innerHTML = '<p>No shoes found.</p>';
+        return;
     }
-// ===============================
-// INIT SHOP
-// ===============================
 
-    // Fetch and render featured shoes
+    shoes.forEach(shoe => {
+        const shoeCard = document.createElement('div');
+        shoeCard.classList.add('shoe-card');
+
+        const img = document.createElement('img');
+        img.src = shoe.image_url;
+        img.alt = shoe.name;
+
+        const name = document.createElement('h3');
+        name.textContent = shoe.name;
+
+        shoeCard.appendChild(img);
+        shoeCard.appendChild(name);
+
+        container.appendChild(shoeCard);
+    });
+}
+
     const featuredShoes = await fetchFeaturedShoes();
     renderFeaturedShoes(featuredShoes);
 }
 
-setupShoesShop(); // Call the setupShoesShop function
+setupShoesShop(); // call the setup function
 
+
+// ===============================
+// END OF SUPABASE SETUP
+// ===============================
