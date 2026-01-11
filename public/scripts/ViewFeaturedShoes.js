@@ -22,54 +22,88 @@ async function setupShoesShop() {
         }
     }
 
-    function showFeaturedShoesOverlay(imageSrc) {
-        const overlay = document.createElement('div');
-        overlay.classList.add('featured-shoes-overlay');
-
-        const overlayImage = document.createElement('img');
-        overlayImage.src = imageSrc;
-
-        overlay.appendChild(overlayImage);
-        document.body.appendChild(overlay);
-
-        overlay.addEventListener('click', () => {
-            document.body.removeChild(overlay);
-        });
-    }
-    function renderFeaturedShoes(shoes = []) {
-    const container = document.getElementById('featured-shoes');
-    container.innerHTML = '';
-
-    if (shoes.length === 0) {
-        container.innerHTML = '<p>No shoes found.</p>';
-        return;
-    }
+ function renderFeaturedShoes(shoes) {
+    const featuredShoesContainer = document.getElementById('featured-shoes');
+    featuredShoesContainer.innerHTML = '';
+    featuredShoesContainer.classList.add('featured-shoes-container');
 
     shoes.forEach(shoe => {
-        const shoeCard = document.createElement('div');
-        shoeCard.classList.add('shoe-card');
+      const shoeCard = document.createElement('div');
+      shoeCard.classList.add('shoe-card');
+    //   shoeCard.setAttribute('data-aos', 'zoom-in-down');      // AOS animation attribute
 
-        const img = document.createElement('img');
-        img.src = shoe.image_url;
-        img.alt = shoe.name;
+      const img = document.createElement('img');
+      img.src = shoe.image_url;
+      img.alt = shoe.name;
 
-        const name = document.createElement('h3');
-        name.textContent = shoe.name;
+      const name = document.createElement('h3');
+      name.textContent = shoe.name;
 
-        shoeCard.appendChild(img);
-        shoeCard.appendChild(name);
+      shoeCard.appendChild(img);
+      shoeCard.appendChild(name);
 
-        container.appendChild(shoeCard);
+      featuredShoesContainer.appendChild(shoeCard);
     });
+  }
+
+  const featuredShoes = await fetchFeaturedShoes();
+  renderFeaturedShoes(featuredShoes);
 }
 
-    const featuredShoes = await fetchFeaturedShoes();
-    renderFeaturedShoes(featuredShoes);
-}
+document.addEventListener('DOMContentLoaded', setupShoesShop);
 
-setupShoesShop(); // call the setup function
+
+
+//     function showFeaturedShoesOverlay(imageSrc) {
+//         const overlay = document.createElement('div');
+//         overlay.classList.add('featured-shoes-overlay');
+
+//         const overlayImage = document.createElement('img');
+//         overlayImage.src = imageSrc;
+
+//         overlay.appendChild(overlayImage);
+//         document.body.appendChild(overlay);
+
+//         overlay.addEventListener('click', () => {
+//             document.body.removeChild(overlay);
+//         });
+//     }
+//     function renderFeaturedShoes(shoes = []) {
+//     const container = document.getElementById('featured-shoes');
+//     container.innerHTML = '';
+
+//     if (shoes.length === 0) {
+//         container.innerHTML = '<p>No shoes found.</p>';
+//         return;
+//     }
+
+//     shoes.forEach(shoe => {
+//         const shoeCard = document.createElement('div');
+//         shoeCard.classList.add('shoe-card');
+
+//         const img = document.createElement('img');
+//         img.src = shoe.image_url;
+//         img.alt = shoe.name;
+
+//         const name = document.createElement('h3');
+//         name.textContent = shoe.name;
+
+//         shoeCard.appendChild(img);
+//         shoeCard.appendChild(name);
+
+//         container.appendChild(shoeCard);
+//     });
+// }
+
+//     const featuredShoes = await fetchFeaturedShoes();
+//     renderFeaturedShoes(featuredShoes);
+// }
+
+// setupShoesShop(); // call the setup function
 
 
 // ===============================
 // END OF SUPABASE SETUP
 // ===============================
+
+

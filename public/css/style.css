@@ -1,6 +1,21 @@
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #f8f9fa;
+/* ===============================
+   GLOBAL BACKGROUND (VANTA)
+================================ */
+
+#home {
+  position: relative;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+/* FULL PAGE VANTA BACKGROUND */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  z-index: -1;
 }

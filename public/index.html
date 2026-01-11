@@ -44,6 +44,8 @@
     <!-- Link to your custom CSS files -->
   <link rel="stylesheet" href="css/viewFeaturedShoes.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/viewShoesButtonCategory.css">
 
   
 
@@ -54,6 +56,37 @@
 
 
 <body>
+
+  <!-- Hero Section with Vanta.js Clouds Background -->
+  <section id="home" class="position-relative" style="overflow:hidden;">
+    <div id="vanta-bg" style="
+      width:100%;
+      min-height:90vh;
+      position:relative;
+    ">
+
+      <!-- HERO TEXT -->
+      <h1 id="hero-title"
+        style="
+          color:#ffffff;
+          font-size:3rem;
+          font-weight:700;
+          letter-spacing:2px;
+          text-shadow:0 4px 10px rgba(0,0,0,0.4);
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-30%, -50%);
+          z-index:1;
+          text-align:center;
+        ">
+        Get the Right Shoes for You
+      </h1>
+
+    </div>
+  </section>
+
+  
 
   <!-- START OF SHOES CONTAINER -->
 
@@ -93,8 +126,8 @@
               <option value="formal">Formal</option>
             </select> -->
             <!--  -->
-<!--             
-            <label for="price-filter">Price Range:</label>
+            
+            <!-- <label for="price-filter">Price Range:</label>
             <select id="price-filter">
               <option value="all">All</option>
               <option value="0-50">$0 - $50</option>
@@ -112,8 +145,7 @@
       </div>
     </div>
   </main>
-
-  <!-- END OF SHOES CONTAINER -->
+    <!-- START OF SHOES CONTAINER -->
 
    <!-- START OF FOOTER -->
   <!-- creates a footer for the webpage. The footer contains three parts:-->
@@ -131,6 +163,13 @@
 
  <!-- Link to custom JavaScript files -->
     <script src="scripts/ViewFeaturedShoes.js"></script>
+    <script src="scripts/ViewShoesTypeContainer.js"></script>
+    <script src="scripts/vanta-cloud.js"></script>
+
+  <!-- VANTA + THREE -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+
 </body>
 
 </html>
